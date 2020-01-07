@@ -1,9 +1,9 @@
 //when selected an li, will toggle on and off color/ line thru
-$("li").on("click", function(){
+$("ul").on("click", "li", function(){
 	$(this).toggleClass("completed");
 });
 //click on X to delete ToDo
-$("span").on("click", function(){
+$("ul").on("click", "span", function(){
   $(this).parent().fadeOut(1000, function(){
   	$(this).remove();
   }); 
@@ -13,7 +13,9 @@ $("input[type ='text']").keypress(function(event){
    if(event.which === 13){
    	//grabbing text from input
    	var toDoText = $(this).val();
+   	//clears out input
+   	$(this).val("");
    	//create a new li and add to ul
-   	$("ul").append("<li>this is anew li appended to the ul</li>");
+   	$("ul").append("<li><span>X </span>" + toDoText + "</li>");
    };
 });
